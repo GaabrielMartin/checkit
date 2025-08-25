@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  checkit-api:
+    build:
+      context: .
+      dockerfile: packages/api/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/v1/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  checkit-api-dev:
+    build:
+      context: .
+      dockerfile: packages/api/Dockerfile
+      target: builder
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    volumes:
+      - ./packages/api/src:/app/packages/api/src
+      - ./packages/core/src:/app/packages/core/src
+    command: npm run dev --workspace=@checkit/api
+    profiles:
+      - dev
