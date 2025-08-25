@@ -332,6 +332,10 @@ A API pode ser deployada em qualquer plataforma que suporte Node.js:
 
 ## 🤝 Contribuindo
 
+Para contribuir com o projeto, consulte nosso [guia de contribuição](CONTRIBUTING.md).
+
+### Processo Básico
+
 1. Fork o projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
 3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)

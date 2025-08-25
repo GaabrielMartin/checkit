@@ -55,7 +55,8 @@ app.get('/', (req, res) => {
       health: '/api/v1/health',
       validation: '/api/v1/validate'
     },
-    documentation: 'https://github.com/checkit/checkit#readme'
+    documentation: 'https://github.com/checkit/checkit#readme',
+    authors: 'Gabriel Silva Martins & Gabriel Martins (shaw)'
   });
 });
 
